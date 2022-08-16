@@ -337,6 +337,7 @@ static int cpuacct_sli_max_show(struct seq_file *sf, void *v)
 	return sli_schedlat_max_show(sf, cgrp);
 }
 
+#ifdef CONFIG_CGROUPFS
 int cpuacct_cgroupfs_uptime_show(struct seq_file *m, void *v)
 {
 	int ret;
@@ -358,6 +359,7 @@ int cpuacct_cgroupfs_cpu_usage(struct cgroup_subsys_state *css, int cpu, u64 *sy
 	*sys = cpuacct_cpuusage_read(ca, cpu, CPUACCT_STAT_SYSTEM);
 	return 0;
 }
+#endif
 
 static int cpuacct_uptime_show(struct seq_file *sf, void *v)
 {

@@ -825,6 +825,7 @@ static int blkcg_dkstats_show_comm(struct seq_file *sf, void *v, struct blkcg *b
 	return 0;
 }
 
+#ifdef CONFIG_CGROUPFS
 int blkcg_cgroupfs_dkstats_show(struct seq_file *m, void *v)
 {
 	int ret;
@@ -838,6 +839,7 @@ int blkcg_cgroupfs_dkstats_show(struct seq_file *m, void *v)
 
 	return ret;
 }
+#endif
 
 static int blkcg_dkstats_show(struct seq_file *sf, void *v)
 {

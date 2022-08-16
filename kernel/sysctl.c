@@ -310,9 +310,11 @@ int accept_info_flag;
 int sendto_info_flag;
 int recvfrom_info_flag;
 int execve_info_flag;
+#ifdef CONFIG_CGROUPFS
 extern int container_cpuquota_aware;
 extern int cgroupfs_stat_show_cpuacct_info;
 int cgroupfs_mounted = 0;
+#endif
 
 /* The default sysctl tables: */
 
@@ -369,6 +371,7 @@ static int max_extfrag_threshold = 1000;
 #endif
 
 static struct ctl_table kern_table[] = {
+#ifdef CONFIG_CGROUPFS
 	{
 		.procname       = "container_cpuquota_aware",
 		.data           = &container_cpuquota_aware,
@@ -390,6 +393,7 @@ static struct ctl_table kern_table[] = {
 		.mode           = 0444,
 		.proc_handler   = proc_dointvec,
 	},
+#endif
 	{
 		.procname	= "connect_info_switch",
 		.data		= &connect_info_flag,

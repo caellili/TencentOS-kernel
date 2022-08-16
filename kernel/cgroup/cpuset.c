@@ -2694,6 +2694,7 @@ static int cpuset_cgroup_stat_show_comm(struct seq_file *sf, void *v, struct cpu
 	return 0;
 }
 
+#ifdef CONFIG_CGROUPFS
 extern int cpuacct_cgroupfs_cpu_usage(struct cgroup_subsys_state *css, int cpu, u64 *sys, u64 *user);
 int cpuset_cgroupfs_stat_cpuacct(struct cpuset *cs, struct seq_file *m, void *v, int max_cpu)
 {
@@ -2824,6 +2825,7 @@ int cpuset_cgroupfs_stat_show(struct seq_file *m, void *v)
 
 	return ret;
 }
+#endif
 
 static int cpuset_cgroup_stat_show(struct seq_file *sf, void *v)
 {
@@ -2979,6 +2981,7 @@ static int cpuset_cgroup_cpuinfo_show_comm(struct seq_file *sf, void *v, struct 
 	return 0;
 }
 
+#ifdef CONFIG_CGROUPFS
 /* return 1 if allowed, otherwise 0 is returned */
 int cpuset_cgroups_cpu_allowed(struct task_struct *task, int cpu, int once)
 {
@@ -3038,6 +3041,7 @@ int cpuset_cgroupfs_get_cpu_count(void)
 
 	return ret;
 }
+#endif
 
 static int cpuset_cgroup_cpuinfo_show(struct seq_file *sf, void *v)
 {
@@ -4336,6 +4340,7 @@ static int cpuset_cgroup_loadavg_show_comm(struct seq_file *sf, void *v, struct 
 	return 0;
 }
 
+#ifdef CONFIG_CGROUPFS
 int cpuset_cgroupfs_loadavg_show(struct seq_file *m, void *v)
 {
 	int ret;
@@ -4349,6 +4354,7 @@ int cpuset_cgroupfs_loadavg_show(struct seq_file *m, void *v)
 
 	return ret;
 }
+#endif
 
 static int cpuset_cgroup_loadavg_show(struct seq_file *sf, void *v)
 {

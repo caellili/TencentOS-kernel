@@ -2,6 +2,7 @@
 config CGROUPFS
 	bool "cgroupfs file system support"
 	default n
+	depends on CGROUPS && SYSFS && CFS_BANDWIDTH && CPUSETS && MEMCG && BLK_CGROUP
 	help
 	The cgroupfs is used to present independent resource views inside container,
 	include cpuinfo, meminfo, stat and so on.
